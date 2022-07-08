@@ -1,0 +1,17 @@
+name=cloud-sink-delete
+topics=%ONPREM_TOPICS%
+connector.class=com.mongodb.kafka.connect.MongoSinkConnector
+tasks.max=1
+
+# Specific global MongoDB Sink Connector configuration
+connection.uri=%CONNECTION_STRING1%
+database=%DATABASE%
+collection=%COLLECTION%
+
+document.id.strategy=com.mongodb.kafka.connect.sink.processor.id.strategy.PartialValueStrategy
+document.id.strategy.partial.value.projection.list=_id
+document.id.strategy.partial.value.projection.type=AllowList
+writemodel.strategy=com.mongodb.kafka.connect.sink.writemodel.strategy.DeleteOneBusinessKeyStrategy
+document.id.strategy.overwrite.existing=true
+
+%ONPREM_OVERRIDE_TOPICS%

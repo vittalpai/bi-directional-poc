@@ -1,0 +1,17 @@
+name=cloud-source
+connector.class=com.mongodb.kafka.connect.MongoSourceConnector
+tasks.max=1
+
+# Connection and source configuration
+connection.uri=%CONNECTION_STRING1%
+database=%DATABASE%
+
+topic.prefix=cloud
+poll.max.batch.size=1000
+poll.await.time.ms=5000
+
+# Change stream options
+pipeline=[{"$match":{"fullDocument._source": { "$ne": "cloud" },"operationType": { "$ne": "delete" }}}, {"$addFields": {"fullDocument._source": "cloud"}}]
+copy.existing.pipeline=[{"$match":{"_source": { "$ne": "cloud" }}}, {"$addFields": {"_source": "cloud"}}]
+publish.full.document.only=true
+copy.existing=true

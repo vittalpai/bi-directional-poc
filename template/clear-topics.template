@@ -1,0 +1,8 @@
+#!/bin/sh
+
+/home/ec2-user/kafka/bin/kafka-topics.sh --delete --bootstrap-server localhost:9092 --topic 'cloud-delete.%DATABASE%.*'
+/home/ec2-user/kafka/bin/kafka-topics.sh --delete --bootstrap-server localhost:9092 --topic 'onprem-delete.%DATABASE%.*'
+/home/ec2-user/kafka/bin/kafka-topics.sh --delete --bootstrap-server localhost:9092 --topic 'cloud.%DATABASE%.*'
+/home/ec2-user/kafka/bin/kafka-topics.sh --delete --bootstrap-server localhost:9092 --topic 'onprem.%DATABASE%.*'
+
+echo "Successfully deleted topics"

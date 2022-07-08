@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "Starting Kafka Server.."
+/home/ec2-user/kafka/bin/kafka-server-start.sh -daemon /home/ec2-user/kafka/config/server.properties
+
+echo "Starting Zookeeper.."
+/home/ec2-user/kafka/bin/zookeeper-server-start.sh -daemon /home/ec2-user/kafka/config/zookeeper.properties
+
+echo "Starting Kafka Connect.."
+/home/ec2-user/kafka/bin/connect-standalone.sh -daemon /home/ec2-user/kafka/config/connect-standalone.properties %CONNECTOR_FILE_PATHS%
+
+sleep 20s

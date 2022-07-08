@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Starting Kafka Connect.."
+/Users/vittalpai/Work/KafkaDemo/kafka/bin/connect-standalone.sh /Users/vittalpai/Work/KafkaDemo/kafka/config/connect-standalone.properties /Users/vittalpai/Work/KafkaDemo/scripts/connector-properties/all-onprem-source.properties /Users/vittalpai/Work/KafkaDemo/scripts/connector-properties/all-onprem-source-delete.properties /Users/vittalpai/Work/KafkaDemo/scripts/connector-properties/onprem-sink.properties /Users/vittalpai/Work/KafkaDemo/scripts/connector-properties/all-cloud-source-delete.properties /Users/vittalpai/Work/KafkaDemo/scripts/connector-properties/all-cloud-source.properties /Users/vittalpai/Work/KafkaDemo/scripts/connector-properties/cloud-sink.properties /Users/vittalpai/Work/KafkaDemo/scripts/connector-properties/cloud-sink-delete.properties /Users/vittalpai/Work/KafkaDemo/scripts/connector-properties/onprem-sink-delete.properties

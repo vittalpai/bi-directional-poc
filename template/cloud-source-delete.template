@@ -1,0 +1,16 @@
+name=cloud-source-delete
+connector.class=com.mongodb.kafka.connect.MongoSourceConnector
+tasks.max=1
+
+# Connection and source configuration
+connection.uri=%CONNECTION_STRING1%
+database=%DATABASE%
+
+topic.prefix=cloud-delete
+poll.max.batch.size=1000
+poll.await.time.ms=5000
+
+# Change stream options
+publish.full.document.only=true
+pipeline=[{"$match":{"operationType": "delete"}},{"$addFields": {"fullDocument._id": "$documentKey._id"}}]
+

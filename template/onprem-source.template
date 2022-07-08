@@ -1,0 +1,17 @@
+name=onprem-source
+connector.class=com.mongodb.kafka.connect.MongoSourceConnector
+tasks.max=1
+
+# Connection and source configuration
+connection.uri=%CONNECTION_STRING2%
+database=%DATABASE%
+
+topic.prefix=onprem
+poll.max.batch.size=1000
+poll.await.time.ms=5000
+
+# Change stream options
+pipeline=[{"$match":{"fullDocument._source": { "$ne": "onprem" },"operationType": { "$ne": "delete" }}}, {"$addFields": {"fullDocument._source": "onprem"}}]
+copy.existing.pipeline=[{"$match":{"_source": { "$ne": "onprem" }}}, {"$addFields": {"_source": "onprem"}}]
+publish.full.document.only=true
+copy.existing=true
