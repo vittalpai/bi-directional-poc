@@ -1,4 +1,4 @@
-# Bi-Directional Scripts
+# Bi-Directional Synchronization for MongoDB
 
 This repository contains a script to generate Kafka connector property files which can be used to enable Bi-directional synchronization in MongoDB Clusters.
 
